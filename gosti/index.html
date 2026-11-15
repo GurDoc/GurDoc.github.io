@@ -21,7 +21,7 @@ const API = 'https://functions.yandexcloud.net/d4enk5qbd776la17mteu'; // адр�
 const code = (new URLSearchParams(location.search).get('c') || '').toUpperCase();
 const $ = id => document.getElementById(id), esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 let L = null;
-const api = b => fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(b) }).then(r => r.json());
+const api = b => fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: JSON.stringify(b) }).then(r => r.json());
 function draw() {
   if (!L) return; $('t').textContent = L.title || 'Список покупок';
   const it = Object.entries(L.items), left = it.filter(([, x]) => !x.ch).length; $('s').textContent = `Код ${code} · осталось купить: ${left} из ${it.length}`;
